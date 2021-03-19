@@ -3,7 +3,6 @@ data_loader_full.py
 inverse_warp_.py
 test_result/
 checkpoints/
-*.tar
 
 
 # Byte-compiled / optimized / DLL files
