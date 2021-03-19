@@ -25,7 +25,7 @@ def save_path_formatter(args, parser):
         if not is_default(key, value):
             folder_string.append('{}{}'.format(prefix, value))
     save_path = Path(','.join(folder_string))
-    timestamp = datetime.datetime.now().strftime("%m-%d-%H:%M")
+    timestamp = datetime.datetime.now().strftime("%m-%d-%H-%M")
     return save_path/timestamp
 
 

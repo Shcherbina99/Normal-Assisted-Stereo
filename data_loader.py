@@ -1,6 +1,6 @@
 import torch.utils.data as data
 import numpy as np
-from scipy.misc import imread
+from imageio import imread
 from path import Path
 import random
 import ntpath
@@ -244,7 +244,9 @@ class SequenceFolder(data.Dataset):
 				s = 0
 				for scene in self.scenes:
 					s = s+1
-					
+
+					if not os.path.exists(scene):
+						continue
 
 					intrinsics = np.genfromtxt(scene/'cam.txt').astype(np.float32).reshape((3, 3))
 					poses = np.genfromtxt(scene/'poses.txt').astype(np.float32)

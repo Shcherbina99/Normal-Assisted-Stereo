@@ -17,7 +17,7 @@ from utils import tensor2array, save_checkpoint, save_path_formatter, adjust_lea
 from loss_functions import compute_errors_train, compute_errors_test, compute_angles
 from inverse_warp_ import check_depth
 
-from logger import TermLogger, AverageMeter
+from logger import AverageMeter
 from itertools import chain
 from tensorboardX import SummaryWriter
 from data_loader import SequenceFolder

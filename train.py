@@ -18,13 +18,12 @@ import custom_transforms
 from utils import tensor2array, save_checkpoint, save_path_formatter, adjust_learning_rate
 from loss_functions import compute_errors_train, compute_errors_test, compute_angles
 
-from logger import TermLogger, AverageMeter
+from logger import AverageMeter
 from itertools import chain
 from tensorboardX import SummaryWriter
 from data_loader import SequenceFolder
 
 import matplotlib.pyplot as plt
-from scipy.misc import imsave
 from path import Path
 import os
 import copy
@@ -92,7 +91,7 @@ def main():
     global n_iter
     args = parser.parse_args()
     save_path = save_path_formatter(args, parser)
-    args.save_path = 'checkpoints'/(args.exp+'_'+save_path)
+    args.save_path = 'checkpoints' / (args.exp + '_' + save_path)
     print('=> will save everything to {}'.format(args.save_path))
     args.save_path.makedirs_p()
     torch.manual_seed(args.seed)
