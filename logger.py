@@ -1,3 +1,4 @@
+from blessings import Terminal
 import progressbar
 import sys
 

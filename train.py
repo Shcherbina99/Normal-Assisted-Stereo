@@ -18,7 +18,7 @@ import custom_transforms
 from utils import tensor2array, save_checkpoint, save_path_formatter, adjust_learning_rate
 from loss_functions import compute_errors_train, compute_errors_test, compute_angles
 
-from logger import AverageMeter
+from logger import TermLogger, AverageMeter
 from itertools import chain
 from tensorboardX import SummaryWriter
 from data_loader import SequenceFolder
