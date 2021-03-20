@@ -1,5 +1,0 @@
-scenes11_train_01425
-scenes11_train_01424
-scenes11_train_01423
-scenes11_train_01426
-scenes11_train_01427
