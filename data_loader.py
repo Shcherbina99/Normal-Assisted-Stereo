@@ -249,16 +249,8 @@ class SequenceFolder(data.Dataset):
 					if not os.path.exists(scene):
 						continue
 
-					if self.ttype != 'test.txt':
-						intrinsics = np.genfromtxt(scene/'cam.txt').astype(np.float32).reshape((3, 3))
-						poses = np.genfromtxt(scene/'poses.txt').astype(np.float32)
-					else:
-						if os.path.exists(scene/'cam.txt') and os.path.exists(scene/'poses.txt'):
-							intrinsics = np.genfromtxt(scene / 'cam.txt').astype(np.float32).reshape((3, 3))
-							poses = np.genfromtxt(scene / 'poses.txt').astype(np.float32)
-						else:
-							intrinsics = []
-							poses = []
+					intrinsics = np.genfromtxt(scene/'cam.txt').astype(np.float32).reshape((3, 3))
+					poses = np.genfromtxt(scene/'poses.txt').astype(np.float32)
 					imgs = sorted(scene.files('*.jpg'))
 					if len(imgs) < sequence_length:
 						continue
