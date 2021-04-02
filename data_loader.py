@@ -108,6 +108,7 @@ class SequenceFolder(data.Dataset):
 		np.random.seed(seed)
 		random.seed(seed)
 		self.dataset = dataset
+		self.ttype = ttype
 		self.root = Path(root)
 		if self.dataset == 'scannet':
 			scene_list_path = self.root/(ttype[:-4] + '_scene.list')
@@ -248,8 +249,16 @@ class SequenceFolder(data.Dataset):
 					if not os.path.exists(scene):
 						continue
 
-					intrinsics = np.genfromtxt(scene/'cam.txt').astype(np.float32).reshape((3, 3))
-					poses = np.genfromtxt(scene/'poses.txt').astype(np.float32)
+					if self.ttype != 'test.txt':
+						intrinsics = np.genfromtxt(scene/'cam.txt').astype(np.float32).reshape((3, 3))
+						poses = np.genfromtxt(scene/'poses.txt').astype(np.float32)
+					else:
+						if os.path.exists(scene/'cam.txt') and os.path.exists(scene/'poses.txt'):
+							intrinsics = np.genfromtxt(scene / 'cam.txt').astype(np.float32).reshape((3, 3))
+							poses = np.genfromtxt(scene / 'poses.txt').astype(np.float32)
+						else:
+							intrinsics = []
+							poses = []
 					imgs = sorted(scene.files('*.jpg'))
 					if len(imgs) < sequence_length:
 						continue
